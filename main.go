@@ -22,7 +22,7 @@ func init() {
 	log.SetOutput(os.Stdout)
 
 	// Only log the warning severity or above.
-	log.SetLevel(log.DebugLevel)
+	log.SetLevel(log.InfoLevel)
 }
 
 func parse(dir, file string) *hclparse.Parser {
@@ -32,7 +32,7 @@ func parse(dir, file string) *hclparse.Parser {
 		err := filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
 			if info != nil && !info.IsDir() {
 				if filepath.Ext(path) == ".hcl" {
-					log.Debugf("Parser found hcl file: %s",path)
+					log.Debugf("Parser found hcl file: %s", path)
 					files = append(files, path)
 				}
 			}
@@ -53,11 +53,11 @@ func parse(dir, file string) *hclparse.Parser {
 		}
 	}
 	for _, file := range files {
-		f , diags := parser.ParseHCLFile(file)
+		f, diags := parser.ParseHCLFile(file)
 		if diags != nil && diags.HasErrors() {
 			log.Fatal(diags.Error())
 		}
-		log.Tracef("file:%s content:%s",file ,f.Bytes)
+		log.Tracef("file:%s content:%s", file, f.Bytes)
 	}
 	return parser
 }
@@ -65,15 +65,25 @@ func parse(dir, file string) *hclparse.Parser {
 func main() {
 
 	//Read command line arguments
-	dirFlag := flag.String("dir", "", "parse .hcl files in directory")
+	dirFlag := flag.String("dir", "conf", "parse .hcl files in directory")
 	fileFlag := flag.String("file", "", "parse file")
+	debugFlag := flag.Bool("debug", false, "enable debug logging")
 	flag.Parse()
+
+	if *debugFlag {
+		log.SetLevel(log.DebugLevel)
+	}
 	log.Debug("CLI args:")
 	if *dirFlag != "" {
-		log.Debugf("-dir=%s",*dirFlag)
+		log.Debugf("-dir=%s", *dirFlag)
 	}
 	if *fileFlag != "" {
-		log.Debugf("-file %s",*fileFlag)
+		log.Debugf("-file %s", *fileFlag)
+	}
+
+	if *fileFlag == "" && *dirFlag == "" {
+		flag.PrintDefaults()
+		log.Fatal("No flags provided.")
 	}
 
 	// Parse hcl files into single body
@@ -86,13 +96,12 @@ func main() {
 
 	// Decode into Dvml struct
 	var dvml Dvml
-	diag := gohcl.DecodeBody(body,nil, &dvml )
+	diag := gohcl.DecodeBody(body, nil, &dvml)
 	if diag != nil {
 		log.Fatal(diag.Error())
 	}
 
-
-	s, _ := json.MarshalIndent(dvml,"","\t")
+	s, _ := json.MarshalIndent(dvml, "", "\t")
 	log.Debug(string(s))
 
 }
@@ -108,7 +117,7 @@ type Source struct {
 }
 
 type Json struct {
-	Name string `hcl:"name,label"`
+	Name   string `hcl:"name,label"`
 	Fields Fields `hcl:"fields,block" json:"fields"`
 }
 
@@ -126,5 +135,5 @@ type Target struct {
 }
 type Hub struct {
 	Name string `hcl:"name,label"`
-	Key string `hcl:"key,attr"`
+	Key  string `hcl:"key,attr"`
 }

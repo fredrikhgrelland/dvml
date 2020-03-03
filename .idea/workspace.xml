@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ed86ca2-4f70-4433-a484-4d7038589649" name="Default Changelist" comment="" />
+    <list default="true" id="2ed86ca2-4f70-4433-a484-4d7038589649" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/example.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,7 +57,10 @@
     <breakpoint_rules converted="true" />
     <ui_properties converted="true" />
   </component>
-  <component name="GOROOT" path="/usr/local/Cellar/go/1.13.8/libexec" />
+  <component name="GOROOT" path="/snap/go/5364" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
   </component>
@@ -73,9 +83,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -92,6 +106,15 @@
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
       <Host>localhost</Host>
       <Port>5050</Port>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -143,19 +166,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file enabled="true" id="idea.log" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Go Build.go build main.go" />
-      <item itemvalue="Go Test.go test dvml2" />
-    </list>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -180,6 +190,15 @@
       <option name="presentableId" value="Default" />
       <updated>1582976748755</updated>
       <workItem from="1582976755774" duration="21688000" />
+      <workItem from="1583141477976" duration="975000" />
+      <workItem from="1583142482295" duration="640000" />
+      <workItem from="1583161783659" duration="727000" />
+      <workItem from="1583162541379" duration="834000" />
+      <workItem from="1583165583861" duration="1719000" />
+      <workItem from="1583245664901" duration="283000" />
+      <workItem from="1583261143290" duration="1863000" />
+      <workItem from="1583268317919" duration="77000" />
+      <workItem from="1583268412073" duration="832000" />
     </task>
     <servers />
   </component>
@@ -191,6 +210,14 @@
     <proxy>direct</proxy>
   </component>
   <component name="WindowStateProjectService">
+    <state x="2113" y="562" width="802" height="672" key="#GOPATH" timestamp="1583162557072">
+      <screen x="1920" y="0" width="1200" height="1920" />
+    </state>
+    <state x="2113" y="562" width="802" height="672" key="#GOPATH/0.711.1920.1200/3120.0.1200.1920/1920.0.1200.1920@1920.0.1200.1920" timestamp="1583162557072" />
+    <state x="2114" y="586" width="802" height="672" key="#GOROOT" timestamp="1583161813537">
+      <screen x="1920" y="0" width="1200" height="1920" />
+    </state>
+    <state x="2114" y="586" width="802" height="672" key="#GOROOT/0.711.1920.1200/3120.0.1200.1920/1920.0.1200.1920@1920.0.1200.1920" timestamp="1583161813537" />
     <state x="304" y="187" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583053754691">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -203,6 +230,10 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="530" y="161" key="#go_build_dvml2/0.0.1680.1050@0.0.1680.1050" timestamp="1582977393531" />
+    <state x="2297" y="656" width="426" height="479" key="FileChooserDialogImpl" timestamp="1583161847341">
+      <screen x="1920" y="0" width="1200" height="1920" />
+    </state>
+    <state x="2297" y="656" width="426" height="479" key="FileChooserDialogImpl/0.711.1920.1200/3120.0.1200.1920/1920.0.1200.1920@1920.0.1200.1920" timestamp="1583161847341" />
     <state width="1638" height="276" key="GridCell.Tab.0.bottom" timestamp="1583100870638">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -219,6 +250,22 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1638" height="276" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1583100870636" />
+    <state x="-3" y="44" width="1920" height="725" key="SettingsEditor" timestamp="1583268571887">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-3" y="44" width="1920" height="725" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1583268571887" />
+    <state x="130" y="86" width="1636" height="725" key="SettingsEditor/0.711.1920.1200/3120.0.1200.1920/1920.0.1200.1920@0.711.1920.1200" timestamp="1583170021219" />
+    <state x="2004" y="450" key="SettingsEditor/0.711.1920.1200/3120.0.1200.1920/1920.0.1200.1920@1920.0.1200.1920" timestamp="1583165634528" />
+    <state x="2010" y="594" width="1022" height="742" key="SettingsEditor/0.735.1920.1152/3120.0.1200.1920/1920.0.1200.1920@1920.0.1200.1920" timestamp="1583142456600" />
+    <state x="2000" y="206" key="SettingsEditor/3120.0.1200.1920/1920.0.1200.1920/0.711.1920.1200@1920.0.1200.1920" timestamp="1583245970215" />
+    <state x="616" y="1138" key="com.intellij.ide.util.TipDialog" timestamp="1583141480073">
+      <screen x="0" y="735" width="1920" height="1152" />
+    </state>
+    <state x="616" y="1138" key="com.intellij.ide.util.TipDialog/0.735.1920.1152/3120.0.1200.1920/1920.0.1200.1920@1920.0.1200.1920" timestamp="1583141480073" />
+    <state x="2262" y="761" width="718" height="296" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1583162286969">
+      <screen x="1920" y="0" width="1200" height="1920" />
+    </state>
+    <state x="2262" y="761" width="718" height="296" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.711.1920.1200/3120.0.1200.1920/1920.0.1200.1920@1920.0.1200.1920" timestamp="1583162286969" />
     <state x="505" y="233" width="670" height="676" key="search.everywhere.popup" timestamp="1582977900317">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
