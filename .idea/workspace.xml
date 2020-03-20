@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ed86ca2-4f70-4433-a484-4d7038589649" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/example.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,9 +84,10 @@
     <property name="configurable.Module.GOPATH.is.expanded" value="false" />
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+    <property name="settings.editor.selected.configurable" value="GitLabConfigurableProvider" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -198,7 +196,12 @@
       <workItem from="1583245664901" duration="283000" />
       <workItem from="1583261143290" duration="1863000" />
       <workItem from="1583268317919" duration="77000" />
-      <workItem from="1583268412073" duration="832000" />
+      <workItem from="1583268412073" duration="2880000" />
+      <workItem from="1583333859412" duration="3664000" />
+      <workItem from="1583393462537" duration="1569000" />
+      <workItem from="1583402822603" duration="1236000" />
+      <workItem from="1583482126126" duration="18000" />
+      <workItem from="1584692456368" duration="159000" />
     </task>
     <servers />
   </component>
@@ -230,10 +233,14 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state x="530" y="161" key="#go_build_dvml2/0.0.1680.1050@0.0.1680.1050" timestamp="1582977393531" />
-    <state x="2297" y="656" width="426" height="479" key="FileChooserDialogImpl" timestamp="1583161847341">
+    <state x="517" y="51" width="873" height="853" key="CommitChangelistDialog2" timestamp="1584692629838">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="517" y="51" width="873" height="853" key="CommitChangelistDialog2/0.0.1920.1080@0.0.1920.1080" timestamp="1584692629838" />
+    <state x="2295" y="608" width="426" height="479" key="FileChooserDialogImpl" timestamp="1583393635403">
       <screen x="1920" y="0" width="1200" height="1920" />
     </state>
-    <state x="2297" y="656" width="426" height="479" key="FileChooserDialogImpl/0.711.1920.1200/3120.0.1200.1920/1920.0.1200.1920@1920.0.1200.1920" timestamp="1583161847341" />
+    <state x="2295" y="608" width="426" height="479" key="FileChooserDialogImpl/0.711.1920.1200/3120.0.1200.1920/1920.0.1200.1920@1920.0.1200.1920" timestamp="1583393635403" />
     <state width="1638" height="276" key="GridCell.Tab.0.bottom" timestamp="1583100870638">
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
@@ -250,10 +257,18 @@
       <screen x="0" y="0" width="1680" height="1050" />
     </state>
     <state width="1638" height="276" key="GridCell.Tab.0.right/0.0.1680.1050@0.0.1680.1050" timestamp="1583100870636" />
-    <state x="-3" y="44" width="1920" height="725" key="SettingsEditor" timestamp="1583268571887">
+    <state x="541" y="133" width="828" height="523" key="IDE.errors.dialog" timestamp="1583334226750">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="-3" y="44" width="1920" height="725" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1583268571887" />
+    <state x="541" y="133" width="828" height="523" key="IDE.errors.dialog/0.0.1920.1080@0.0.1920.1080" timestamp="1583334226750" />
+    <state x="2103" y="214" width="823" height="899" key="NewModule_or_Project.wizard" timestamp="1583393706629">
+      <screen x="1920" y="0" width="1200" height="1920" />
+    </state>
+    <state x="2103" y="214" width="823" height="899" key="NewModule_or_Project.wizard/0.711.1920.1200/3120.0.1200.1920/1920.0.1200.1920@1920.0.1200.1920" timestamp="1583393706629" />
+    <state x="-5" y="-4" width="1920" height="725" key="SettingsEditor" timestamp="1583334178219">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-5" y="-4" width="1920" height="725" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1583334178219" />
     <state x="130" y="86" width="1636" height="725" key="SettingsEditor/0.711.1920.1200/3120.0.1200.1920/1920.0.1200.1920@0.711.1920.1200" timestamp="1583170021219" />
     <state x="2004" y="450" key="SettingsEditor/0.711.1920.1200/3120.0.1200.1920/1920.0.1200.1920@1920.0.1200.1920" timestamp="1583165634528" />
     <state x="2010" y="594" width="1022" height="742" key="SettingsEditor/0.735.1920.1152/3120.0.1200.1920/1920.0.1200.1920@1920.0.1200.1920" timestamp="1583142456600" />
