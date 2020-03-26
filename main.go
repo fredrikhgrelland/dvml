@@ -3,10 +3,16 @@ package main
 import (
 	"encoding/json"
 	"flag"
+	"fmt"
 	"github.com/hashicorp/hcl/v2"
 	"github.com/hashicorp/hcl/v2/gohcl"
+	"github.com/hashicorp/hcl/v2/hcldec"
 	"github.com/hashicorp/hcl/v2/hclparse"
 	log "github.com/sirupsen/logrus"
+	"github.com/zclconf/go-cty/cty"
+	"github.com/zclconf/go-cty/cty/function"
+	"github.com/zclconf/go-cty/cty/function/stdlib"
+	ctyjson "github.com/zclconf/go-cty/cty/json"
 	"os"
 	"path/filepath"
 	//import "github.com/Masterminds/squirrel"
@@ -95,20 +101,68 @@ func main() {
 	body := hcl.MergeFiles(files)
 
 	// Decode into Dvml struct
-	var dvml Dvml
-	diag := gohcl.DecodeBody(body, nil, &dvml)
+	var root Root
+	diag := gohcl.DecodeBody(body, nil, &root)
 	if diag != nil {
+		for _, diag := range diag {
+			fmt.Printf("decoding - %s\n", diag)
+		}
 		log.Fatal(diag.Error())
 	}
 
-	s, _ := json.MarshalIndent(dvml, "", "\t")
-	log.Debug(string(s))
+	variables := map[string]cty.Value{}
 
+	for _, v := range root.Source[0].Json.Fields.Varchar {
+		if len(v.Path) == 0 {
+			continue
+		}
+
+		val, diag := v.Path["path"].Expr.Value(nil)
+
+		if diag != nil {
+			for _, diag := range diag {
+				fmt.Printf("decoding - %s\n", diag)
+			}
+			log.Fatal(diag.Error())
+		}
+		variables[v.Name] = val
+	}
+
+	evalContext := &hcl.EvalContext{
+		Variables: map[string]cty.Value{
+			"var": cty.ObjectVal(variables),
+		},
+		Functions: map[string]function.Function{
+			"upper": stdlib.UpperFunc,
+		},
+	}
+
+	// create output definition
+	spec := &hcldec.ObjectSpec{
+		"result": &hcldec.AttrSpec{
+			Name:     "result",
+			Required: true,
+			Type:     cty.String,
+		},
+	}
+
+	cfg, diag := hcldec.Decode(root.Target[0].Config, spec, evalContext)
+	if diag != nil {
+		for _, diag := range diag {
+			fmt.Printf("decoding - %s\n", diag)
+		}
+		log.Fatal(diag.Error())
+	}
+
+	s, _ := json.MarshalIndent(root, "", " ")
+	result, _ := json.MarshalIndent(ctyjson.SimpleJSONValue{cfg}, "", " ")
+	log.Debug(string(s))
+	log.Debug(string(result))
 }
 
-type Dvml struct {
-	Source Source `hcl:"source,block"`
-	Target Target `hcl:"target,block"`
+type Root struct {
+	Source []Source `hcl:"source,block"`
+	Target []Target `hcl:"target,block"`
 	//Remain hcl.Body `hcl:"denna,remain"`
 }
 
@@ -117,22 +171,29 @@ type Source struct {
 }
 
 type Json struct {
-	Name   string `hcl:"name,label"`
+	Name   string `hcl:"name,label"  json:"name"`
 	Fields Fields `hcl:"fields,block" json:"fields"`
 }
 
 type Fields struct {
 	Varchar []Varchar `hcl:"varchar,block"`
+	Numbers []Number  `hcl:"number,block"`
 }
 
 type Varchar struct {
+	Name string         `hcl:"name,label"`
+	Path hcl.Attributes `hcl:"path,remain"`
+}
+type Number struct {
 	Name string `hcl:"name,label"`
 	Path string `hcl:"path,attr" `
 }
 
 type Target struct {
-	Hub []Hub `hcl:"hub,block"`
+	Hub    []Hub    `hcl:"hub,block"`
+	Config hcl.Body `hcl:",remain"`
 }
+
 type Hub struct {
 	Name string `hcl:"name,label"`
 	Key  string `hcl:"key,attr"`
