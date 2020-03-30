@@ -15,6 +15,8 @@ import (
 	ctyjson "github.com/zclconf/go-cty/cty/json"
 	"os"
 	"path/filepath"
+	"time"
+
 	//import "github.com/Masterminds/squirrel"
 	//import "github.com/hashicorp/go-getter"
 )
@@ -100,7 +102,8 @@ func main() {
 	}
 	body := hcl.MergeFiles(files)
 
-	// Decode into Dvml struct
+	// Decode into Root struct
+	// Hierarki source -> target(hub) -> target(link) -> target(sat)
 	var root Root
 	diag := gohcl.DecodeBody(body, nil, &root)
 	if diag != nil {
@@ -131,39 +134,57 @@ func main() {
 	evalContext := &hcl.EvalContext{
 		Variables: map[string]cty.Value{
 			"var": cty.ObjectVal(variables),
+			"nows": cty.StringVal(time.Now().Format(time.RFC3339)),
 		},
 		Functions: map[string]function.Function{
 			"upper": stdlib.UpperFunc,
+			"now": now(),
 		},
 	}
 
 	// create output definition
 	spec := &hcldec.ObjectSpec{
-		"result": &hcldec.AttrSpec{
-			Name:     "result",
+		"key": &hcldec.AttrSpec{
+			Name:     "key",
 			Required: true,
 			Type:     cty.String,
 		},
+		"date": &hcldec.AttrSpec{
+			Name:     "date",
+			Required: false,
+			Type:     cty.String,
+
+		},
+		"computed": &hcldec.AttrSpec{
+			Name:     "computed",
+			Required: false,
+			Type:     cty.String,
+
+		},
 	}
 
-	cfg, diag := hcldec.Decode(root.Target[0].Config, spec, evalContext)
-	if diag != nil {
-		for _, diag := range diag {
-			fmt.Printf("decoding - %s\n", diag)
+	for _, target := range root.Target {
+		for _, hub := range target.Hub {
+			cfg, diag := hcldec.Decode(hub.Config, spec, evalContext)
+			if diag != nil {
+				for _, diag := range diag {
+					fmt.Printf("decoding - %s\n", diag)
+				}
+				log.Fatal(diag.Error())
+			}
+			result, _ := json.MarshalIndent(ctyjson.SimpleJSONValue{cfg}, "", " ")
+			log.Info(string(result))
 		}
-		log.Fatal(diag.Error())
 	}
 
 	s, _ := json.MarshalIndent(root, "", " ")
-	result, _ := json.MarshalIndent(ctyjson.SimpleJSONValue{cfg}, "", " ")
 	log.Debug(string(s))
-	log.Debug(string(result))
+
 }
 
 type Root struct {
 	Source []Source `hcl:"source,block"`
 	Target []Target `hcl:"target,block"`
-	//Remain hcl.Body `hcl:"denna,remain"`
 }
 
 type Source struct {
@@ -191,10 +212,21 @@ type Number struct {
 
 type Target struct {
 	Hub    []Hub    `hcl:"hub,block"`
-	Config hcl.Body `hcl:",remain"`
 }
 
 type Hub struct {
 	Name string `hcl:"name,label"`
-	Key  string `hcl:"key,attr"`
+	Computed string `hcl:"computed,optional"`
+	Config hcl.Body `hcl:",remain"`
+}
+
+// Now!
+func now() function.Function {
+	return function.New(&function.Spec{
+		Params: nil,
+		Type: function.StaticReturnType(cty.String),
+		Impl: func(args []cty.Value, retType cty.Type) (cty.Value, error) {
+			return cty.StringVal(time.Now().Format(time.RFC3339)), nil
+		},
+	})
 }
