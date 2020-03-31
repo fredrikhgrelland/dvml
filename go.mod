@@ -10,5 +10,6 @@ require (
 	github.com/mattn/go-colorable v0.1.6 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/sirupsen/logrus v1.4.2
+	github.com/zclconf/go-cty v1.2.0
 	golang.org/x/sys v0.0.0-20200302150141-5c8b2ff67527 // indirect
 )
