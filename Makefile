@@ -1,7 +1,12 @@
-.PHONY: run debug
+.PHONY: run debug build
+
+build:
+	go build
 
 run:
-	go run main.go -dir conf
+	./dvml2 -dir conf
 
 debug:
-	go run main.go -dir conf -debug
+	./dvml2 -dir conf -debug
+
+dev: build debug
